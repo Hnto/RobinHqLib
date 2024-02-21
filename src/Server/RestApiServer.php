@@ -7,7 +7,6 @@
 namespace Emico\RobinHqLib\Server;
 
 
-use Emico\RobinHqLib\Config\Config;
 use Emico\RobinHqLib\Config\ConfigInterface;
 use Emico\RobinHqLib\DataProvider\DataProviderInterface;
 use Emico\RobinHqLib\DataProvider\Exception\DataNotFoundException;
@@ -15,7 +14,7 @@ use Emico\RobinHqLib\DataProvider\Exception\InvalidRequestException;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 
 class RestApiServer
 {
