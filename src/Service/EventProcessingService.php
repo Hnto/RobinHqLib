@@ -16,35 +16,20 @@ use Psr\Log\LoggerInterface;
 
 class EventProcessingService
 {
-    /**
-     * @var EventSerializer
-     */
-    private $eventSerializer;
-
-    /**
-     * @var EventProcessorInterface[]
-     */
-    private $eventProcessors;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private ?EventSerializer $eventSerializer = null;
 
     /**
      * @param LoggerInterface $logger
-     * @param array $eventProcessors
+     * @param EventProcessorInterface[] $eventProcessors
      */
-    public function __construct(LoggerInterface $logger, array $eventProcessors = [])
+    public function __construct(private LoggerInterface $logger, private array $eventProcessors = [])
     {
-        $this->logger = $logger;
-        $this->eventProcessors = $eventProcessors;
     }
 
     /**
      * @param string $event
      */
-    public function processEvent(string $event)
+    public function processEvent(string $event): void
     {
         $event = $this->getEventSerializer()->unserializeEvent($event);
 
@@ -59,7 +44,7 @@ class EventProcessingService
 
     /**
      * @param EventInterface $event
-     * @return EventProcessorInterface|mixed
+     * @return EventProcessorInterface
      * @throws Exception
      */
     protected function getEventProcessor(EventInterface $event): EventProcessorInterface
@@ -75,7 +60,7 @@ class EventProcessingService
      * @param string $action
      * @param EventProcessorInterface $eventProcessor
      */
-    public function registerEventProcessor(string $action, EventProcessorInterface $eventProcessor)
+    public function registerEventProcessor(string $action, EventProcessorInterface $eventProcessor): void
     {
         $this->eventProcessors[$action] = $eventProcessor;
     }

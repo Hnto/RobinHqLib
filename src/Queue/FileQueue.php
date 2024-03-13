@@ -16,17 +16,17 @@ class FileQueue implements QueueInterface
     /**
      * @var string
      */
-    private $directory;
+    private string $directory;
 
     /**
      * @var EventProcessingService
      */
-    private $eventProcessingService;
+    private EventProcessingService $eventProcessingService;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @param string $directory
@@ -44,7 +44,7 @@ class FileQueue implements QueueInterface
     /**
      * @param string $directory
      */
-    protected function ensureDirectoryExists(string $directory)
+    protected function ensureDirectoryExists(string $directory): void
     {
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
@@ -64,7 +64,7 @@ class FileQueue implements QueueInterface
     /**
      * @param int $maxItems
      */
-    public function processQueue($maxItems = 100)
+    public function processQueue(int $maxItems = 100): void
     {
         $count = 0;
 

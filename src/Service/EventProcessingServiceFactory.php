@@ -6,18 +6,22 @@
 
 namespace Emico\RobinHqLib\Service;
 
-
-use Emico\RobinHqLib\Client\RobinClient;
 use Emico\RobinHqLib\EventProcessor\CustomerEventProcessor;
 use Emico\RobinHqLib\EventProcessor\OrderEventProcessor;
-use Emico\RobinHqLib\Queue\Serializer\EventSerializer;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 class EventProcessingServiceFactory
 {
-    public function __invoke(ContainerInterface $container)
+    /**
+     * @param ContainerInterface $container
+     * @return EventProcessingService
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function __invoke(ContainerInterface $container): EventProcessingService
     {
         $eventProcessingService = new EventProcessingService(
             $container->get(LoggerInterface::class)

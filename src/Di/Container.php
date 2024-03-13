@@ -35,7 +35,7 @@ class Container implements ContainerInterface
     /**
      * @var array
      */
-    private $factories = [
+    private array $factories = [
         FileQueue::class => FileQueueFactory::class,
         QueueInterface::class => FileQueueFactory::class,
         LoggerInterface::class => LoggerFactory::class,
@@ -51,7 +51,7 @@ class Container implements ContainerInterface
     /**
      * @var array
      */
-    private $instances = [];
+    private array $instances = [];
 
     /**
      * @param Config $config
@@ -67,7 +67,7 @@ class Container implements ContainerInterface
      * @throws InvalidFactoryException
      * @throws ServiceNotFoundException
      */
-    public function get($id)
+    public function get(string $id)
     {
         if (isset($this->instances[$id])) {
             return $this->instances[$id];
@@ -93,7 +93,7 @@ class Container implements ContainerInterface
      * @param string $id
      * @return bool
      */
-    public function has($id)
+    public function has(string $id): bool
     {
         return isset($this->factories[$id]);
     }
@@ -103,7 +103,7 @@ class Container implements ContainerInterface
      * @param callable $factory
      * @return $this
      */
-    public function setFactory(string $id, callable $factory)
+    public function setFactory(string $id, callable $factory): self
     {
         $this->factories[$id] = $factory;
         return $this;
@@ -114,7 +114,7 @@ class Container implements ContainerInterface
      * @param mixed $instance
      * @return $this
      */
-    public function setInstance(string $id, $instance)
+    public function setInstance(string $id, mixed $instance): self
     {
         $this->instances[$id] = $instance;
         return $this;

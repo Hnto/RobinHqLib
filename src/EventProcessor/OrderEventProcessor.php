@@ -15,24 +15,18 @@ use Psr\Log\LoggerInterface;
 class OrderEventProcessor implements EventProcessorInterface
 {
     /**
-     * @var RobinClient
-     */
-    private $robinClient;
-
-    /**
      * OrderEventProcessor constructor.
      * @param RobinClient $robinClient
      */
-    public function __construct(RobinClient $robinClient)
+    public function __construct(private RobinClient $robinClient)
     {
-        $this->robinClient = $robinClient;
     }
 
     /**
      * @param EventInterface|OrderEvent $event
      * @return bool
      */
-    public function processEvent(EventInterface $event)
+    public function processEvent(EventInterface $event): bool
     {
         $this->robinClient->postDynamicOrder($event->getOrder());
         return true;

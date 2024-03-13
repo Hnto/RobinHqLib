@@ -8,16 +8,19 @@ namespace Emico\RobinHqLib\EventProcessor;
 
 
 use Emico\RobinHqLib\Client\RobinClient;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
-use Psr\Log\LoggerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class OrderEventProcessorFactory
 {
     /**
      * @param ContainerInterface $container
      * @return OrderEventProcessor
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): OrderEventProcessor
     {
         return new OrderEventProcessor($container->get(RobinClient::class));
     }
