@@ -7,15 +7,19 @@
 namespace Emico\RobinHqLib\Server;
 
 use Emico\RobinHqLib\Config\Config;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class RestApiServerFactory
 {
     /**
      * @param ContainerInterface $container
      * @return RestApiServer
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): RestApiServer
     {
         /** @var Config $config */
         $config = $container->get(Config::class);

@@ -16,24 +16,18 @@ use Psr\Log\LoggerInterface;
 class CustomerEventProcessor implements EventProcessorInterface
 {
     /**
-     * @var RobinClient
-     */
-    private $robinClient;
-
-    /**
      * CustomerEventProcessor constructor.
      * @param RobinClient $robinClient
      */
-    public function __construct(RobinClient $robinClient)
+    public function __construct(protected RobinClient $robinClient)
     {
-        $this->robinClient = $robinClient;
     }
 
     /**
      * @param EventInterface|CustomerEvent $event
      * @return bool
      */
-    public function processEvent(EventInterface $event)
+    public function processEvent(EventInterface $event): bool
     {
         $this->robinClient->postDynamicCustomer($event->getCustomer());
         return true;

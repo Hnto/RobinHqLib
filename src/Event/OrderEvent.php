@@ -12,16 +12,10 @@ use Emico\RobinHqLib\Model\Order;
 class OrderEvent implements EventInterface
 {
     /**
-     * @var Order
-     */
-    protected $order;
-
-    /**
      * @param Order $order
      */
-    public function __construct(Order $order)
+    public function __construct(protected Order $order)
     {
-        $this->order = $order;
     }
 
     /**

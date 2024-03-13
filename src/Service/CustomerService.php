@@ -14,30 +14,21 @@ use Emico\RobinHqLib\Queue\Serializer\EventSerializer;
 
 class CustomerService
 {
-    /**
-     * @var QueueInterface
-     */
-    private $queue;
-
-    /**
-     * @var EventSerializer
-     */
-    private $eventSerializer;
+    private EventSerializer $eventSerializer;
 
     /**
      * CustomerService constructor.
      * @param QueueInterface $queue
      */
-    public function __construct(QueueInterface $queue)
+    public function __construct(private QueueInterface $queue)
     {
-        $this->queue = $queue;
         $this->eventSerializer = new EventSerializer();
     }
 
     /**
      * @param Customer $customer
      */
-    public function postCustomer(Customer $customer)
+    public function postCustomer(Customer $customer): void
     {
         $event = new CustomerEvent($customer);
         $this->queue->pushEvent($this->eventSerializer->serializeEvent($event));

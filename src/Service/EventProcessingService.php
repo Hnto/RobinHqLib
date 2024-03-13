@@ -16,28 +16,19 @@ use Psr\Log\LoggerInterface;
 
 class EventProcessingService
 {
-    /**
-     * @var EventSerializer
-     */
-    private $eventSerializer;
+    private ?EventSerializer $eventSerializer = null;
 
     /**
      * @var EventProcessorInterface[]
      */
-    private $eventProcessors;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private array $eventProcessors = [];
 
     /**
      * @param LoggerInterface $logger
      * @param array $eventProcessors
      */
-    public function __construct(LoggerInterface $logger, array $eventProcessors = [])
+    public function __construct(private LoggerInterface $logger, array $eventProcessors = [])
     {
-        $this->logger = $logger;
         $this->eventProcessors = $eventProcessors;
     }
 

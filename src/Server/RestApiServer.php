@@ -19,19 +19,13 @@ use Laminas\Diactoros\Response\JsonResponse;
 class RestApiServer
 {
     /**
-     * @var ConfigInterface
-     */
-    private $config;
-
-    /**
      * RestApiServer constructor.
      * @param ConfigInterface $config
      * @internal param string $apiKey
      * @internal param string $apiSecret
      */
-    public function __construct(ConfigInterface $config)
+    public function __construct(protected ConfigInterface $config)
     {
-        $this->config = $config;
     }
 
     /**

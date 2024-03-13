@@ -9,7 +9,9 @@ namespace Emico\RobinHqLib\Client;
 
 use Emico\RobinHqLib\Config\Config;
 use GuzzleHttp\Client;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
 
 class RobinClientFactory
@@ -17,8 +19,10 @@ class RobinClientFactory
     /**
      * @param ContainerInterface $container
      * @return RobinClient
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): RobinClient
     {
         /** @var Config $config */
         $config = $container->get(Config::class);

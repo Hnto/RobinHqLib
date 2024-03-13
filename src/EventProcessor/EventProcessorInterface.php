@@ -15,5 +15,5 @@ interface EventProcessorInterface
      * @param EventInterface $event
      * @return bool
      */
-    public function processEvent(EventInterface $event);
+    public function processEvent(EventInterface $event): bool;
 }

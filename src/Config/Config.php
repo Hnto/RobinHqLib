@@ -15,22 +15,22 @@ class Config implements ConfigInterface
     /**
      * @var bool
      */
-    protected $apiEnabled = true;
+    protected bool $apiEnabled = true;
 
     /**
      * @var string
      */
-    protected $apiKey;
+    protected string $apiKey;
 
     /**
      * @var string
      */
-    protected $apiSecret;
+    protected string $apiSecret;
 
     /**
      * @var string
      */
-    protected $apiUri = 'https://api.robinhq.com/';
+    protected string $apiUri = 'https://api.robinhq.com/';
 
     /**
      * @var string

@@ -12,16 +12,10 @@ use Emico\RobinHqLib\Model\Customer;
 final class CustomerEvent implements EventInterface
 {
     /**
-     * @var Customer
-     */
-    protected $customer;
-
-    /**
      * @param Customer $customer
      */
-    public function __construct(Customer $customer)
+    public function __construct(protected Customer $customer)
     {
-        $this->customer = $customer;
     }
 
     /**

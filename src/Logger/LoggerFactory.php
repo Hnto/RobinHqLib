@@ -16,7 +16,7 @@ class LoggerFactory
      * @param ContainerInterface $container
      * @return NullLogger
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): NullLogger
     {
         return new NullLogger();
     }
