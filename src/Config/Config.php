@@ -10,7 +10,7 @@ namespace Emico\RobinHqLib\Config;
 class Config implements ConfigInterface
 {
     /** Date format to use in json serialization */
-    const JSON_DATE_FORMAT = DATE_ATOM;
+    const JSON_DATE_FORMAT = DATE_ISO8601;
 
     /**
      * @var bool

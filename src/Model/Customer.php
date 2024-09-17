@@ -241,7 +241,7 @@ class Customer implements JsonSerializable
             'email_address' => $this->emailAddress,
             'name' => $this->name,
             'phone_number' => $this->phoneNumber,
-            'customer_since' => $this->customerSince ? $this->customerSince->format(DateTimeInterface::ATOM) : '',
+            'customer_since' => $this->customerSince ? $this->customerSince->format(\DateTimeInterface::ISO8601) : '',
             'order_count' => $this->orderCount,
             'total_revenue' => $this->totalRevenue,
             'total_spent' => (string) $this->totalRevenue,
