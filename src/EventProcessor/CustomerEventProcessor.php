@@ -8,6 +8,7 @@ namespace Emico\RobinHqLib\EventProcessor;
 
 
 use Emico\RobinHqLib\Client\RobinClient;
+use Emico\RobinHqLib\Event\CustomerEvent;
 use Emico\RobinHqLib\Event\EventInterface;
 
 class CustomerEventProcessor implements EventProcessorInterface
@@ -21,7 +22,7 @@ class CustomerEventProcessor implements EventProcessorInterface
     }
 
     /**
-     * @param EventInterface $event
+     * @param EventInterface|CustomerEvent $event
      * @return bool
      */
     public function processEvent(EventInterface $event): bool

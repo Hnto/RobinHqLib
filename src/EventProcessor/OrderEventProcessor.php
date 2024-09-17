@@ -9,6 +9,7 @@ namespace Emico\RobinHqLib\EventProcessor;
 
 use Emico\RobinHqLib\Client\RobinClient;
 use Emico\RobinHqLib\Event\EventInterface;
+use Emico\RobinHqLib\Event\OrderEvent;
 
 class OrderEventProcessor implements EventProcessorInterface
 {
@@ -21,7 +22,7 @@ class OrderEventProcessor implements EventProcessorInterface
     }
 
     /**
-     * @param EventInterface $event
+     * @param EventInterface|OrderEvent $event
      * @return bool
      */
     public function processEvent(EventInterface $event): bool
