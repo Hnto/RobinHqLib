@@ -7,7 +7,6 @@
 namespace Emico\RobinHqLib\Service;
 
 
-use Emico\RobinHqLib\Client\RobinClient;
 use Emico\RobinHqLib\Event\EventInterface;
 use Emico\RobinHqLib\EventProcessor\EventProcessorInterface;
 use Emico\RobinHqLib\Queue\Serializer\EventSerializer;

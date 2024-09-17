@@ -10,7 +10,6 @@ namespace Emico\RobinHqLib\EventProcessor;
 use Emico\RobinHqLib\Client\RobinClient;
 use Emico\RobinHqLib\Event\EventInterface;
 use Emico\RobinHqLib\Event\OrderEvent;
-use Psr\Log\LoggerInterface;
 
 class OrderEventProcessor implements EventProcessorInterface
 {

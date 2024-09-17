@@ -14,6 +14,7 @@ use Emico\RobinHqLib\Model\Collection;
 use Emico\RobinHqLib\Model\Customer;
 use Emico\RobinHqLib\Model\Order;
 use GuzzleHttp\Client;
+use GuzzleHttp\Utils;
 use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -112,7 +113,7 @@ class RobinClient
      */
     protected function post(string $path, $payload): ResponseInterface
     {
-        $this->logger->debug('Payload: ' . \GuzzleHttp\json_encode($payload));
+        $this->logger->debug('Payload: ' . Utils::jsonEncode($payload));
 
         $response = $this->httpClient->post($path, [
             'auth' => [ $this->config->getApiKey(), $this->config->getApiSecret() ],

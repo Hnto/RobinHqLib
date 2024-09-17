@@ -8,7 +8,6 @@ namespace Emico\RobinHqLib\Client;
 
 
 use Emico\RobinHqLib\Config\Config;
-use GuzzleHttp\Client;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;

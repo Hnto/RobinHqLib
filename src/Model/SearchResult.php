@@ -7,9 +7,6 @@
 namespace Emico\RobinHqLib\Model;
 
 
-use DateTime;
-use DateTimeInterface;
-
 class SearchResult implements \JsonSerializable
 {
     /**

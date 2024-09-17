@@ -24,7 +24,7 @@ class Collection implements JsonSerializable, \Countable
     /**
      * Collection constructor.
      * @param array $elements
-     * @param string $key
+     * @param null|string $key
      */
     public function __construct(array $elements, string $key = null)
     {
