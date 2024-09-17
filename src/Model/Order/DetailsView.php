@@ -7,7 +7,6 @@
 namespace Emico\RobinHqLib\Model\Order;
 
 use DateTimeInterface;
-use Emico\RobinHqLib\Config\Config;
 use JsonSerializable;
 
 class DetailsView implements JsonSerializable

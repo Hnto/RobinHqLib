@@ -8,11 +8,9 @@ namespace Emico\RobinHqLib\EventProcessor;
 
 
 use Emico\RobinHqLib\Client\RobinClient;
-use Emico\RobinHqLib\Queue\EventInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Psr\Log\LoggerInterface;
 
 class CustomerEventProcessorFactory
 {

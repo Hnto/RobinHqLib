@@ -22,12 +22,10 @@ class FileQueueFactory
      */
     public function __invoke(ContainerInterface $container): FileQueue
     {
-        $queue = new FileQueue(
+        return new FileQueue(
             __DIR__ . '/../../var/queue',
             $container->get(EventProcessingService::class),
             $container->get(LoggerInterface::class)
         );
-
-        return $queue;
     }
 }

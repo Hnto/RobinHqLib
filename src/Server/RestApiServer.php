@@ -12,9 +12,9 @@ use Emico\RobinHqLib\DataProvider\DataProviderInterface;
 use Emico\RobinHqLib\DataProvider\Exception\DataNotFoundException;
 use Emico\RobinHqLib\DataProvider\Exception\InvalidRequestException;
 use Exception;
+use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Laminas\Diactoros\Response\JsonResponse;
 
 class RestApiServer
 {
@@ -71,7 +71,7 @@ class RestApiServer
         /* If using PHP in CGI mode. */
         if (isset($serverParams['HTTP_AUTHORIZATION'])) {
             if (preg_match("/Basic\s+(.*)$/i", $serverParams['HTTP_AUTHORIZATION'], $matches)) {
-                list($user, $password) = explode(':', base64_decode($matches[1]), 2);
+                [$user, $password] = explode(':', base64_decode($matches[1]), 2);
             }
         } else {
             if (isset($serverParams["PHP_AUTH_USER"])) {

@@ -22,7 +22,6 @@ class OrderService
      */
     public function __construct(private QueueInterface $queue)
     {
-        $this->queue = $queue;
         $this->eventSerializer = new EventSerializer();
     }
 

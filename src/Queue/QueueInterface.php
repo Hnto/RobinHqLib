@@ -7,13 +7,11 @@
 namespace Emico\RobinHqLib\Queue;
 
 
-use Emico\RobinHqLib\Service\EventProcessingService;
-
 interface QueueInterface
 {
     /**
-     * @param string $event
+     * @param string $serializedEvent
      * @return bool
      */
-    public function pushEvent(string $event): bool;
+    public function pushEvent(string $serializedEvent): bool;
 }
