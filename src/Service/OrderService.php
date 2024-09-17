@@ -14,16 +14,13 @@ use Emico\RobinHqLib\Queue\Serializer\EventSerializer;
 
 class OrderService
 {
-    private EventSerializer $eventSerializer;
-
     /**
      * CustomerService constructor.
-     * @param QueueInterface $queue
      */
-    public function __construct(private QueueInterface $queue)
-    {
-        $this->eventSerializer = new EventSerializer();
-    }
+    public function __construct(
+        private QueueInterface $queue,
+        private EventSerializer $eventSerializer,
+    ) {}
 
     /**
      * @param Order $order
